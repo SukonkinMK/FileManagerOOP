@@ -4,6 +4,8 @@ public class FileManagerLogic
 {
     private readonly IUserInterface _userInterface;
 
+    public DirectoryInfo CurrentDirectory { get; set; } = new("c:\\");
+
     public FileManagerLogic(IUserInterface userInterface)
     {
         _userInterface = userInterface;
