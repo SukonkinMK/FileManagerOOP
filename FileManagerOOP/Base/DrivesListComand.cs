@@ -9,6 +9,9 @@ public class DrivesListComand : FileManagerComand
     {
         _userInterface = userInterface;
     }
+
+    public override string Description => "Вывод дисков файловой системы";
+
     public override void Execute(string[] args)
     {
         var drives = DriveInfo.GetDrives();
