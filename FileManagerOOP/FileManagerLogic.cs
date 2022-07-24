@@ -17,10 +17,20 @@ public class FileManagerLogic
         {
             var input = _userInterface.ReadLine("> ", false);
 
-            if (input == "q")
-                can_work = false;
-            else
-                _userInterface.WriteLine($"Введена команда {input}");
+            switch (input)
+            {
+                case "q":
+                    can_work = false;
+                    break;
+                case "int":
+                    int int_value  = _userInterface.ReadInt("Введите целое число");
+                    _userInterface.WriteLine($"Введено: {int_value}");  
+                    break;
+                case "double":
+                    double double_value = _userInterface.ReadDouble("Введите целое число");
+                    _userInterface.WriteLine($"Введено: {double_value}");
+                    break;
+            }
         }
         while (can_work);
     }
