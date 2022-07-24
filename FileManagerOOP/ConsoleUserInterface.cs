@@ -2,11 +2,20 @@
 
 public class ConsoleUserInterface : IUserInterface
 {
-    public string ReadLine(string? message)
+    public string ReadLine(string? message, bool newLine)
     {
         //if(message != null && message.Length > 0)
         if (message is { Length: > 0 })
-            WriteLine(message);
+        {
+            if (newLine)
+            {
+                WriteLine(message);
+            }
+            else
+            {
+                Write(message);
+            }
+        }
 
         return Console.ReadLine()!;
     }
@@ -14,5 +23,9 @@ public class ConsoleUserInterface : IUserInterface
     public void WriteLine(string message)
     {
         Console.WriteLine(message);
+    }
+    public void Write(string message)
+    {
+        Console.Write(message);
     }
 }

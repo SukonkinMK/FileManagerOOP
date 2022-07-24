@@ -15,7 +15,7 @@ public class FileManagerLogic
         bool can_work = true;
         do
         {
-            var input = _userInterface.ReadLine("Введите команду");
+            var input = _userInterface.ReadLine("> ", false);
 
             if (input == "q")
                 can_work = false;
