@@ -17,10 +17,13 @@ public class FileManagerLogic
     {
         _outUserInterface = outUserInterface;
         _inUserInterface = inUserInterface;
+
+        var dirCommand = new PrintDirectoryFilesCommand(_outUserInterface, this);
         Commands = new Dictionary<string, FileManagerComand>()
         {
             { "drives", new DrivesListComand(_outUserInterface) },
-            { "dir", new PrintDirectoryFilesCommand(_outUserInterface,this) },
+            { "dir", dirCommand },
+            { "dir -p n", dirCommand },
             { "help", new HelpCommand(_outUserInterface, this) },
             { "quit", new QuitCommand(this) },
             { "cd", new ChangeDirectoryCommand(_outUserInterface, this) },

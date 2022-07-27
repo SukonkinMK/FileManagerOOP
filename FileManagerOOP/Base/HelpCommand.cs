@@ -18,7 +18,7 @@ public class HelpCommand : FileManagerComand
         _userInterface.WriteLine("Файловый менеджер поддерживает следующие команды:");
         foreach (var (name, command) in _fileManager.Commands)
         {
-            _userInterface.WriteLine($"\t{name}\t{command.Description}");
+            _userInterface.WriteLine($"  {name,-10}\t{command.Description}");
         }
     }
 

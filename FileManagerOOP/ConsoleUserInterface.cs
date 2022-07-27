@@ -1,4 +1,6 @@
-﻿namespace FileManagerOOP;
+﻿using System.Text;
+
+namespace FileManagerOOP;
 
 public class ConsoleUserInterface : IUserInterface
 {
@@ -68,5 +70,10 @@ public class ConsoleUserInterface : IUserInterface
         while (!success);
 
         return result;
+    }
+
+    public void Write(StringBuilder message, string[] args)
+    {
+        throw new NotImplementedException();
     }
 }

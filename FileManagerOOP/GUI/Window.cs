@@ -1,4 +1,6 @@
-﻿namespace FileManagerOOP.GUI;
+﻿using System.Text;
+
+namespace FileManagerOOP.GUI;
 
 public class Window : IUserInterface
 {
@@ -8,7 +10,7 @@ public class Window : IUserInterface
 
     public int Width { get; }
 
-    public int Height{ get; }
+    public int Height { get; }
 
     public Window(int positionX, int positionY, int width, int height)
     {
@@ -102,7 +104,7 @@ public class Window : IUserInterface
 
     public virtual string ReadLine(string? message, bool newLine = true) { return ""; }
 
-    public virtual void Write(string message) 
+    public virtual void Write(string message)
     {
         SetCursorPosition();
 
@@ -119,7 +121,7 @@ public class Window : IUserInterface
     private void SetCursorPosition()
     {
         (int left, int top) = GetCursorPosition();
-        if (top > PositionY + Height - 2 )
+        if (top > PositionY + Height - 2)
         {
             Console.SetCursorPosition(PositionX, PositionY + 1);
             (left, top) = GetCursorPosition();
@@ -131,5 +133,37 @@ public class Window : IUserInterface
     private (int left, int top) GetCursorPosition()
     {
         return (Console.CursorLeft, Console.CursorTop);
+    }
+
+    public void Write(StringBuilder tree, string[] args)
+    {
+        int page;
+        int pageLines = Height - 3;
+        string[] lines = tree.ToString().Split('\n');
+        int pageTotal = (lines.Length + pageLines - 1) / pageLines;
+
+        if (args.Length > 2 && args[1] == "-p" && int.TryParse(args[2], out page))
+        {
+            if (page > pageTotal)
+            {
+                page = pageTotal;
+            }
+        }
+        else
+        {
+            page = 1;
+        }
+
+        for (int i = (page - 1) * pageLines, counter = 0; i < page * pageLines; i++, counter++)
+        {
+            if (lines.Length - 1 > i)
+            {
+                WriteLine(lines[i]);
+            }
+        }
+
+        string footer = $"╣ {page} of {pageTotal} ╠";
+        Console.SetCursorPosition(Width/ 2 - footer.Length / 2, Height - 1);
+        Console.Write(footer);
     }
 }
