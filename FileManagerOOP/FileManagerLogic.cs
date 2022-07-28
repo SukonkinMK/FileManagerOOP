@@ -27,6 +27,7 @@ public class FileManagerLogic
             { "help", new HelpCommand(_outUserInterface, this) },
             { "quit", new QuitCommand(this) },
             { "cd", new ChangeDirectoryCommand(_outUserInterface, this) },
+            { "fcreate", new CreateFileComand(_outUserInterface, this) },
         };
     }
     public void Start()
