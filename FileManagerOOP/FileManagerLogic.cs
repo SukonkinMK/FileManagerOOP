@@ -31,6 +31,7 @@ public class FileManagerLogic
             { "dcreate", new CreateDirectoryCommand(_outUserInterface, this) },
             { "rm", new RemoveFileOrDirectoryCommand(_outUserInterface, this) },
             { "cp", new CopyFileOrDirectoryCommand(_outUserInterface, this) },
+            { "info", new InfoFileOrDirectoryCommand(_outUserInterface, this) },
         };
     }
     public void Start()
