@@ -28,14 +28,7 @@ public class CreateFileComand : FileManagerComand
         if (!Path.IsPathRooted(filename))
             filename = Path.Combine(_fileManager.CurrentDirectory.FullName, filename);
 
-        try
-        {
-            File.Create(filename);
-            _userInterface.WriteLine($"Файл успешно создан. Путь к файлу {filename}");
-        }
-        catch (Exception ex)
-        {
-            _userInterface.WriteLine("При создании файла произошла ошибка");
-        }
+        using (File.Create(filename)) ;
+        _userInterface.WriteLine($"Файл успешно создан. Путь к файлу {filename}");
     }
 }

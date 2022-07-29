@@ -22,12 +22,14 @@ public class FileManagerLogic
         Commands = new Dictionary<string, FileManagerComand>()
         {
             { "drives", new DrivesListComand(_outUserInterface) },
-            { "dir", dirCommand },
-            { "dir -p n", dirCommand },
+            { "ls", dirCommand },
+            { "ls -p n", dirCommand },
             { "help", new HelpCommand(_outUserInterface, this) },
             { "quit", new QuitCommand(this) },
             { "cd", new ChangeDirectoryCommand(_outUserInterface, this) },
             { "fcreate", new CreateFileComand(_outUserInterface, this) },
+            { "dcreate", new CreateDirectoryCommand(_outUserInterface, this) },
+            { "rm", new RemoveFileOrDirectoryCommand(_outUserInterface, this) },
         };
     }
     public void Start()
