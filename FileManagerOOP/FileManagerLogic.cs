@@ -27,11 +27,13 @@ public class FileManagerLogic
             { "help", new HelpCommand(_outUserInterface, this) },
             { "quit", new QuitCommand(this) },
             { "cd", new ChangeDirectoryCommand(_outUserInterface, this) },
-            { "fcreate", new CreateFileComand(_outUserInterface, this) },
-            { "dcreate", new CreateDirectoryCommand(_outUserInterface, this) },
+            { "touch", new CreateFileComand(_outUserInterface, this) },
+            { "mkdir", new CreateDirectoryCommand(_outUserInterface, this) },
             { "rm", new RemoveFileOrDirectoryCommand(_outUserInterface, this) },
             { "cp", new CopyFileOrDirectoryCommand(_outUserInterface, this) },
             { "info", new InfoFileOrDirectoryCommand(_outUserInterface, this) },
+            { "move", new MoveFileOrDirectoryCommand(_outUserInterface, this) },
+            { "rename", new RenameFileOrDirectory(_outUserInterface, this) },
         };
     }
     public void Start()

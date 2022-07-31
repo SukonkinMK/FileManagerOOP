@@ -19,7 +19,7 @@ public class CopyFileOrDirectoryCommand : FileManagerComand
         if (args.Length != 3 || string.IsNullOrWhiteSpace(args[1]))
         {
             _userInterface.WriteLine("Для команды копирования файла или каталога необходимо указать два параметра:");
-            _userInterface.WriteLine("1) путь или имя исходного файла или каталога и путь или имя конечного файла или каталога");
+            _userInterface.WriteLine("1) путь или имя исходного файла или каталога");
             _userInterface.WriteLine("2) путь или имя конечного файла или каталога");
             return;
         }
